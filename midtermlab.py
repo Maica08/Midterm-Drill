@@ -5,7 +5,6 @@ class Account:
         self._balance = balance
         self._dateofOpening = dateofOpening
 
-
     @property
     def accountNumber(self) -> int:
         return self._accountNumber
