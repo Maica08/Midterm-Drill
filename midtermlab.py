@@ -33,13 +33,13 @@ class Account:
         if withdraw_amount > 0 and withdraw_amount < self.balance:
             self.balance -= withdraw_amount
         else:
-            print("Invalid withdrawal amount. Cannot withdraw.")
+            print("Invalid withdrawal amount. Amount must be between 0 and amount of current balance; cannot withdraw.")
 
     def credit_amount(self, deposit_amount:float) -> None:
         if deposit_amount > 0:
             self.balance += deposit_amount
         else:
-            print("Invalid deposit amount.")
+            print("Invalid deposit amount. Amount must be greater than 0.")
 
 
 class Customer:
@@ -82,7 +82,6 @@ class Customer:
         self._phone = set_phone
 
     def display_info(self):
-        print("CUSTOMER INFORMATION")
         print(f"Name: {self.name}")
         print(f"Customer ID: {self.customerId}")
         print(f"Address: {self.address}")
@@ -169,7 +168,58 @@ def main():
     current1.add_customer(customer1)
     current2.add_customer(customer2)
 
-    print("----------Customer Info----------")
+    # TESTER
+    # savings2.add_customer(customer2)
+    # savings2.remove_customer()
+    # savings2.remove_customer()
+    # print(savings2.customer)
+
+    # savings1.debit_amount(5000)
+    # print(savings1.balance)
+    # savings1.credit_amount(-50)
+    # print(savings1.balance)
+
+    # current1.interestRate = -5
+
+    # MAIN
+    withdraw_savings1 = 200
+    withdraw_savings2 = 300
+    withdraw_currrent1 = 100
+    withdraw_current2 = 200
+
+    deposit_savings1 = 500
+    deposit_savings2 = 600
+    deposit_current1 = 1000
+    deposit_current2 = 1100
+
+    print("Savings Accounts Withdraw and Deposit History")
+    print(f"Savings Account 1 Initial Balance: {savings1.balance}")
+    savings1.debit_amount(withdraw_amount=withdraw_savings1)
+    print(f"Balance after cash withdrawal 200: {savings1.balance}")
+    savings1.credit_amount(deposit_amount=deposit_savings1)
+    print(f"Balance after cash deposit {deposit_savings1}:    {savings1.balance}\n")
+
+    print(f"Savings Account 2 Initial Balance: {savings2.balance}")
+    savings2.debit_amount(withdraw_amount=withdraw_savings2)
+    print(f"Balance after cash withdrawal {withdraw_savings2}: {savings2.balance}")
+    savings2.credit_amount(deposit_amount=deposit_savings2)
+    print(f"Balance after cash deposit {deposit_savings2}:    {savings2.balance}\n")
+
+    print("Current Accounts Withdraw and Deposit History")
+    print(f"Current Account 1 Initial Balance: {current1.balance}")
+    current1.debit_amount(withdraw_amount=withdraw_currrent1)
+    print(f"Balance after cash withdrawal {withdraw_currrent1}: {current1.balance}")
+    current1.credit_amount(deposit_amount=deposit_current1)
+    print(f"Balance after cash deposit {deposit_current1}: {current1.balance}\n")
+    
+    print(f"Current Account 2 Initial Balance: {current2.balance}")
+    current1.debit_amount(withdraw_amount=withdraw_current2)
+    print(f"Balance after cash withdrawal {withdraw_current2}: {current2.balance}")
+    current1.credit_amount(deposit_amount=deposit_current2)
+    print(f"Balance after cash deposit {deposit_current2}: {current2.balance}\n")
+
+
+    print("----------Account Logs----------")
     for account in SavingsAccount.all_savings_accounts:
         account.customer.display_info()
         print("Account Type: Savings")
