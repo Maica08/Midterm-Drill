@@ -134,12 +134,14 @@ class CurrentAccount(Account):
 
     @property
     def interestRate(self) -> float:
-        interestRate = self._interestRate
-        return interestRate
+        return self._interestRate
 
     @interestRate.setter
     def interestRate(self, set_interestRate:float) -> None:
-        self._interestRate = set_interestRate
+        if set_interestRate <= 1 and set_interestRate >= 0:
+            self._interestRate = set_interestRate
+        else:
+            print("Invalid value of interest rate; value must be between 1 and 0.")
 
     def add_customer(self, customer:Customer) -> None:
         if self.customer == None:
