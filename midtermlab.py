@@ -31,7 +31,7 @@ class Account:
         self._dateofOpening = set_date
 
     def debit_amount(self, withdraw_amount:float) -> None:
-        if withdraw_amount > self.balance:
+        if withdraw_amount > 0 and withdraw_amount < self.balance:
             self.balance -= withdraw_amount
         else:
             print("Invalid withdrawal amount. Cannot withdraw.")
