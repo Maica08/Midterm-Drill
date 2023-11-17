@@ -77,11 +77,11 @@ class Customer:
     def phone(self) -> str:
         return self._phone
 
-    @address.setter
+    @phone.setter
     def phone(self, set_phone:str) -> None:
         self._phone = set_phone
 
-    def display_info(self):
+    def display_info(self) -> None:
         print(f"Name: {self.name}")
         print(f"Customer ID: {self.customerId}")
         print(f"Address: {self.address}")
@@ -147,6 +147,7 @@ class CurrentAccount(Account):
         else:
             print("Customer already assigned.")
 
+
     def remove_customer(self) -> None:
         if self.customer != None:
             self.customer = None
@@ -155,11 +156,11 @@ class CurrentAccount(Account):
 
 
 def main():
-    customer1 = Customer(customerId=100001, name="George Cruz", address="Palawan", phone="09123456789")
-    customer2 = Customer(customerId=100002, name="Maya Magno", address="Puerto Princesa", phone="09345678912")
+    customer1 = Customer(customerId=100001, name="Crishel B. Ponce", address="Palawan", phone="09123456789")
+    customer2 = Customer(customerId=100002, name="Fernando P. Pineda Jr.", address="Puerto Princesa", phone="09345678912")
 
-    savings1 = SavingsAccount(accountNumber = 125456, balance = 4500, dateofOpening = "Jan 3, 2015", minBalance = 100)
-    savings2 = SavingsAccount(accountNumber = 125457, balance = 5500, dateofOpening = "Aug 3, 2015", minBalance = 100)
+    savings1 = SavingsAccount(accountNumber=125456, balance=4500, dateofOpening="Jan 3, 2015", minBalance=100)
+    savings2 = SavingsAccount(accountNumber=125457, balance=5500, dateofOpening="Aug 3, 2015", minBalance=100)
     savings1.add_customer(customer1)
     savings2.add_customer(customer2)
 
@@ -169,6 +170,8 @@ def main():
     current2.add_customer(customer2)
 
     # TESTER
+
+    # print(len(SavingsAccount.all_savings_accounts))
     # savings2.add_customer(customer2)
     # savings2.remove_customer()
     # savings2.remove_customer()
@@ -213,9 +216,9 @@ def main():
     print(f"Balance after cash deposit {deposit_current1}: {current1.balance}\n")
     
     print(f"Current Account 2 Initial Balance: {current2.balance}")
-    current1.debit_amount(withdraw_amount=withdraw_current2)
+    current2.debit_amount(withdraw_amount=withdraw_current2)
     print(f"Balance after cash withdrawal {withdraw_current2}: {current2.balance}")
-    current1.credit_amount(deposit_amount=deposit_current2)
+    current2.credit_amount(deposit_amount=deposit_current2)
     print(f"Balance after cash deposit {deposit_current2}: {current2.balance}\n")
 
 
